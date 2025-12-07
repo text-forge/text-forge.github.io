@@ -11,23 +11,23 @@
       "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-rc2"
     },
     {
+      "id": "bookmarks-smart-indentation",
+      "title": "Bookmarks & Smart Indentation Released",
+      "date": "2025-12-07",
+      "tag": "feature",
+      "featured": false,
+      "excerpt": "Say hi to Text Forge v0.2 - RC2: Bookmarks for quick navigation, smart indentation that adapts to your language, and UI filters for a cleaner workspace are now available. This update makes working with Text Forge smoother and more efficient.",
+      "link": "https://github.com/text-forge/text-forge/discussions"
+    },
+    {
       "id": "v0.2-rc1-release",
       "title": "Template System & Synchronized Preview Scrolling",
       "version": "v0.2-rc1",
       "date": "2025-11-20",
       "tag": "release",
-      "featured": true,
+      "featured": false,
       "excerpt": "We're excited to announce the first release candidate for version 0.2! This release introduces the powerful new Template System, allowing you to create reusable document structures with customizable placeholders. We've also added synchronized preview scrolling, so your preview pane follows along as you edit.",
       "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-rc1"
-    },
-    {
-      "id": "bookmarks-smart-indentation",
-      "title": "Bookmarks & Smart Indentation Released",
-      "date": "2025-12-07",
-      "tag": "feature",
-      "featured": true,
-      "excerpt": "Say hi to Text Forge v0.2 - RC2: Bookmarks for quick navigation, smart indentation that adapts to your language, and UI filters for a cleaner workspace are now available. This update makes working with Text Forge smoother and more efficient.",
-      "link": "https://github.com/text-forge/text-forge/discussions"
     },
     {
       "id": "v0.2-beta2-release",
@@ -63,7 +63,7 @@
       "title": "Getting Started with Text Forge",
       "date": "Updated",
       "tag": "guide",
-      "featured": false,
+      "featured": true,
       "excerpt": "New to Text Forge? Check out our comprehensive documentation to learn about modules, modes, action scripts, and how to customize your editing experience.",
       "link": "https://text-forge.github.io/docs/introduction"
     }
