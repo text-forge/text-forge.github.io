@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Features & Comparison — Text Forge</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Page-specific additions (kept small; main styles in css/styles.css) */
+    .features-hero {
+      padding: 6.5rem 0 3.5rem;
+      text-align: center;
+    }
+    .feature-compare-container {
+      padding: 3rem 0 6rem;
+    }
+    .feature-row {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1rem !important;
+      padding: 1rem;
+      border-radius: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      text-align: left;
+      align-items: flex-start;
+    }
+    .feature-title-compare {
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-desc-compare {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    /* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ MAIN CHANGE: 2 PARAMETERS PER ROW ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+    /* Horizontal editor list per feature */
+    .compare-grid {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
+      padding-bottom: 0.3rem;
+      scrollbar-width: thin;
+    }
+    .compare-entry {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 8px;
+      white-space: nowrap;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--color-border);
+      flex-shrink: 0; /* prevent compression */
+    }
+    .compare-entry .label {
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .compare-badge {
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight:700;
+    }
+    .badge-yes {
+      background: rgba(93,229,249,0.12);
+      color: var(--color-cyan);
+      border:1px solid rgba(93,229,249,0.18);
+    }
+    .badge-partial {
+      background: rgba(168,85,247,0.08);
+      color: var(--color-purple);
+      border:1px solid rgba(168,85,247,0.12);
+    }
+    .badge-no {
+      background: rgba(110,119,129,0.06);
+      color: var(--color-text-muted);
+      border:1px solid rgba(110,119,129,0.08);
+    }
+    .search-input {
+      min-width: 260px;
+      padding:0.6rem 0.75rem;
+      border-radius:8px;
+      border:1px solid var(--color-border);
+      background:var(--color-bg-tertiary);
+      color:var(--color-text);
+    }
+    .chip {
+      padding:0.35rem 0.6rem;
+      border-radius:999px;
+      border:1px solid var(--color-border);
+      background:transparent;
+      font-weight:600;
+      cursor:pointer;
+      color: gray;
+    }
+    .chip.active {
+      border-color:var(--color-cyan);
+      background: rgba(93,229,249,0.06);
+      color:var(--color-cyan);
+    }
+    @media (max-width: 768px) {
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+      /* Even on mobile, still two columns as requested */
+      .compare-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo.png" alt="Text Forge Logo" class="logo-img">
+        <span class="logo-text">Text Forge</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="#screenshots" class="nav-link">Screenshots</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="https://text-forge.github.io/docs/" class="nav-link" target="_blank">Docs</a></li>
+        <li><a href="https://text-forge.github.io/marketplace/" class="nav-link" target="_blank">Marketplace</a></li>
+        <li><a href="https://github.com/text-forge/text-forge" class="nav-link nav-link-github" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="features-hero">
+      <div class="section-header">
+        <h2 class="section-title">Overview of Features</h2>
+        <p class="section-subtitle">Everything you need to forge your perfect editing experience</p>
+      </div>
+    </section>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3 class="feature-title">Modular by Design</h3>
+        <p class="feature-description">Every feature is a module. Enable only what you need, keeping the editor lean and focused on your workflow.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="feature-title">Scriptable Actions</h3>
+        <p class="feature-description">Define powerful workflows with action scripts. Automate repetitive tasks and create custom commands.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <h3 class="feature-title">Custom Modes</h3>
+        <p class="feature-description">Tailor the editor for any language or data format. Create modes that understand your specific needs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3 class="feature-title">Standalone & Lightweight</h3>
+        <p class="feature-description">No external dependencies. A single executable that runs anywhere without complex setup.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="feature-title">Template System</h3>
+        <p class="feature-description">Reusable, customizable templates for common document types. Start projects faster with pre-built structures.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <h3 class="feature-title">Marketplace</h3>
+        <p class="feature-description">Share and discover extensions with the community. Find modes, themes, and modules created by others.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="feature-title">Syntax Highlighting</h3>
+        <p class="feature-description">Language-agnostic, theme-aware syntax highlighting. Beautiful code display that adapts to your preferences.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="feature-title">Accessible by Default</h3>
+        <p class="feature-description">Full keyboard navigation and screen reader support. Everyone can use Text Forge effectively.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="feature-title">User-Driven</h3>
+        <p class="feature-description">Open source and community-focused. Every user can contribute improvements and shape the editor's future.</p>
+      </div>
+    </div>
+    <section class="features-hero">
+      <h1 class="section-title">Comparison</h1>
+      <p class="section-subtitle">Feature-by-feature breakdown of Text Forge and how it compares to other popular editors.</p>
+      <p style="color:var(--color-text-secondary); margin-top:0.5rem; font-size:0.95rem;">
+        This page compares Text Forge against widely-used editors (Visual Studio Code, Sublime Text, Notepad++, and Emacs). Summary notes below are intended as general guidance — links to official documentation are listed after the comparison for exact, up-to-date details.
+      </p>
+    </section>
+    <section id="comparison" class="feature-compare-container">
+      <!-- Feature rows: each row contains the feature description and a mini grid comparing editors -->
+      <!-- 1. Modular / Modules -->
+      <div class="feature-row" data-tags="ext community">
+        <div>
+          <div class="feature-title-compare">Modular by Design</div>
+          <div class="feature-desc-compare">Text Forge's architecture is module-first: features are discrete modules you enable or disable. This keeps the core lightweight while enabling users to compose exactly the workflow they need.</div>
+        </div>
+        <div class="compare-grid" aria-hidden="false">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Module system</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-partial">Extension-based</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Packages</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Plugins</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Highly extensible</span></div>
+        </div>
+      </div>
+      <!-- 2. Scriptable Actions -->
+      <div class="feature-row" data-tags="ext core">
+        <div>
+          <div class="feature-title-compare">Scriptable Actions</div>
+          <div class="feature-desc-compare">Action scripts and automations let users record and run complex workflows or create custom commands.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Action scripts</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Tasks & extensions</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Macros & plugins</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Macros + plugins</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Elisp macros</span></div>
+        </div>
+      </div>
+      <!-- 3. Custom Modes -->
+      <div class="feature-row" data-tags="ext core">
+        <div>
+          <div class="feature-title-compare">Custom Modes</div>
+          <div class="feature-desc-compare">Modes that understand specific languages/data formats (syntax rules, indentation, preview formats).</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Mode system</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Language extensions & LSP</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Syntax packages</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Built-in syntaxes</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Major/minor modes</span></div>
+        </div>
+      </div>
+      <!-- 4. Standalone & Lightweight -->
+      <div class="feature-row" data-tags="ux">
+        <div>
+          <div class="feature-title-compare">Standalone & Lightweight</div>
+          <div class="feature-desc-compare">Single executable distribution with no heavy external dependencies; good for constrained environments.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Standalone</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-partial">Electron-based (larger)</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-yes">Lightweight binary</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-yes">Native Windows binary</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-partial">Large but native</span></div>
+        </div>
+      </div>
+      <!-- 5. Template System -->
+      <div class="feature-row" data-tags="core ux">
+        <div>
+          <div class="feature-title-compare">Template System</div>
+          <div class="feature-desc-compare">Reusable project or document templates with placeholders to jumpstart new files or projects.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Built-in templates</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-partial">Project & snippet templates via extensions</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Snippets & packages</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Limited</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Templates via packages (YASnippet, skeletons)</span></div>
+        </div>
+      </div>
+      <!-- 6. Marketplace -->
+      <div class="feature-row" data-tags="community">
+        <div>
+          <div class="feature-title-compare">Marketplace / Extensions</div>
+          <div class="feature-desc-compare">Community repository for modules, modes and themes to install or share.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Marketplace (community)</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Large extension marketplace</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-yes">Package Control ecosystem</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-yes">PluginCentral / community</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">MELPA / ELPA</span></div>
+        </div>
+      </div>
+      <!-- 7. Syntax Highlighting -->
+      <div class="feature-row" data-tags="core ux">
+        <div>
+          <div class="feature-title-compare">Syntax Highlighting</div>
+          <div class="feature-desc-compare">Theme-aware, language-agnostic highlighting that adapts to the chosen editor theme.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Theme-aware</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Robust + LSP</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-yes">Fast highlighter</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-yes">Many syntaxes</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Modes provide highlighting</span></div>
+        </div>
+      </div>
+      <!-- 8. Accessibility -->
+      <div class="feature-row" data-tags="ux">
+        <div>
+          <div class="feature-title-compare">Accessibility</div>
+          <div class="feature-desc-compare">Keyboard navigation and screen reader support by default.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Designed for accessibility</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Accessibility features</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Basic keyboard support</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Windows-focused</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Extensive keyboard-driven UI</span></div>
+        </div>
+      </div>
+      <!-- 9. Backup / Reliability -->
+      <div class="feature-row" data-tags="core">
+        <div>
+          <div class="feature-title-compare">Backups & Reliability</div>
+          <div class="feature-desc-compare">Automatic backups, crash recovery and safe plugin handling.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Auto backups (configurable)</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-partial">Auto save & extensions</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Session restore</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Backup plugins</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-partial">Configurable backups</span></div>
+        </div>
+      </div>
+      <!-- 10. Flexible Project System -->
+      <div class="feature-row" data-tags="core">
+        <div>
+          <div class="feature-title-compare">Flexible Project System</div>
+          <div class="feature-desc-compare">Uses a single `.tfproj` file for project data, allowing files from any path and even single-file projects for flexibility.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Project file</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-partial">Folders & workspace</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Project/workspace</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-no">Folder only</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-partial">Projectile</span></div>
+        </div>
+      </div>
+      <!-- 11. Multi-Caret Editing -->
+      <div class="feature-row" data-tags="core">
+        <div>
+          <div class="feature-title-compare">Multi-Caret Editing</div>
+          <div class="feature-desc-compare">Supports multiple carets/selections for simultaneous editing of code in different places.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Multi-caret</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Multiple cursors</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-yes">Multiple selections</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Multi-edit (plugins)</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-partial">Multiple cursors (plugins)</span></div>
+        </div>
+      </div>
+      <!-- 12. Code Completion -->
+      <div class="feature-row" data-tags="core">
+        <div>
+          <div class="feature-title-compare">Code Completion</div>
+          <div class="feature-desc-compare">Provides mode-driven auto-completion for code and text (context-aware suggestions).</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Mode-driven</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">IntelliSense (LSP)</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Basic + plugins</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Basic + plugins</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Yes (plugins)</span></div>
+        </div>
+      </div>
+      <!-- 13. File Outline -->
+      <div class="feature-row" data-tags="core">
+        <div>
+          <div class="feature-title-compare">File Outline</div>
+          <div class="feature-desc-compare">Outline panel to navigate sections or symbols in the file (mode-provided).</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Outline panel</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Outline view</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Goto Symbol</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Document map</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Imenu</span></div>
+        </div>
+      </div>
+      <!-- 14. Live Preview -->
+      <div class="feature-row" data-tags="core ux">
+        <div>
+          <div class="feature-title-compare">Live Preview</div>
+          <div class="feature-desc-compare">Generates a live preview of the file (e.g. HTML or Markdown rendering) in a side panel.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Live preview</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Live preview</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Preview (plugins)</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-no">None</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-partial">Live preview</span></div>
+        </div>
+      </div>
+      <!-- 15. Linting / Problems Panel -->
+      <div class="feature-row" data-tags="core">
+        <div>
+          <div class="feature-title-compare">Linting (Problems Panel)</div>
+          <div class="feature-desc-compare">Mode-driven linting that shows errors and warnings in a Problems panel at the bottom.</div>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-entry"><span class="label">Text Forge</span><span class="compare-badge badge-yes">Problems panel</span></div>
+          <div class="compare-entry"><span class="label">VS Code</span><span class="compare-badge badge-yes">Problems panel</span></div>
+          <div class="compare-entry"><span class="label">Sublime</span><span class="compare-badge badge-partial">Lint plugin</span></div>
+          <div class="compare-entry"><span class="label">Notepad++</span><span class="compare-badge badge-partial">Lint plugin</span></div>
+          <div class="compare-entry"><span class="label">Emacs</span><span class="compare-badge badge-yes">Flycheck</span></div>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem; color:var(--color-text-secondary); font-size:0.9rem;">
+        Notes: The short comparison rows above are *summary guidance* — each editor is highly configurable, and some capabilities (like LSP support or templates) can be added via community packages/extensions. For authoritative, up-to-date details see the docs linked below.
+      </p>
+      <div style="margin-top:1.25rem; padding:1rem; border-radius:10px; border:1px solid var(--color-border); background:var(--color-bg); color:var(--color-text-secondary);">
+        <strong>Official references</strong>
+        <ul style="margin-top:0.5rem;">
+          <li><a href="https://code.visualstudio.com/docs" target="_blank">Visual Studio Code documentation</a></li>
+          <li><a href="https://www.sublimetext.com/docs/" target="_blank">Sublime Text docs</a></li>
+          <li><a href="https://notepad-plus-plus.org/" target="_blank">Notepad++ official site</a></li>
+          <li><a href="https://www.gnu.org/software/emacs/" target="_blank">GNU Emacs</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/logo.png" alt="Text Forge Logo" class="logo-img">
+            <span>Text Forge</span>
+          </a>
+          <p class="footer-tagline">Simplicity to start, power to grow!</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Project</h4>
+            <ul>
+              <li><a href="https://github.com/text-forge/text-forge" target="_blank">GitHub</a></li>
+              <li><a href="https://github.com/text-forge/text-forge/releases" target="_blank">Releases</a></li>
+              <li><a href="https://text-forge.github.io/docs/" target="_blank">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="https://github.com/text-forge/text-forge/discussions" target="_blank">Discussions</a></li>
+              <li><a href="https://text-forge.github.io/marketplace" target="_blank">Marketplace</a></li>
+              <li><a href="https://github.com/text-forge/mode-library" target="_blank">Mode Library</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>More</h4>
+            <ul>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="https://github.com/text-forge/text-forge/blob/main/LICENSE" target="_blank">License (MIT)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Text Forge. Open source under MIT License.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      const search = document.getElementById('feature-search');
+      const chips = document.querySelectorAll('.chip');
+      const rows = Array.from(document.querySelectorAll('.feature-row'));
+      
+      function filterRows() {
+        const q = search.value.trim().toLowerCase();
+        const activeChip = document.querySelector('.chip.active')?.dataset?.filter || 'all';
+        
+        rows.forEach(row => {
+          const tags = (row.dataset.tags || '').split(' ');
+          const text = row.innerText.toLowerCase();
+          
+          const matchesSearch = q === '' || text.includes(q);
+          const matchesChip = activeChip === 'all' || tags.includes(activeChip);
+          
+          row.style.display = (matchesSearch && matchesChip) ? 'flex' : 'none';
+        });
+      }
+      
+      // Search input
+      search.addEventListener('input', filterRows);
+      
+      // Chips
+      chips.forEach(c => {
+        c.addEventListener('click', () => {
+          chips.forEach(x => x.classList.remove('active'));
+          c.classList.add('active');
+          filterRows();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

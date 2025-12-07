@@ -77,6 +77,10 @@ ul {
     padding: 0 1.5rem;
 }
 
+/* ------------------------------- */
+/* NAVIGATION & HEADER */
+/* ------------------------------- */
+
 .header {
     position: fixed;
     top: 0;
@@ -146,7 +150,8 @@ ul {
     transition: color var(--transition-fast);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active-nav {
     color: var(--color-text);
 }
 
@@ -162,6 +167,10 @@ ul {
 .nav-link-github:hover {
     background: var(--color-bg-tertiary);
 }
+
+/* ------------------------------- */
+/* BUTTONS */
+/* ------------------------------- */
 
 .btn {
     display: inline-flex;
@@ -211,6 +220,10 @@ ul {
     border-color: var(--color-cyan);
     background: rgba(93, 229, 249, 0.1);
 }
+
+/* ------------------------------- */
+/* HERO SECTION */
+/* ------------------------------- */
 
 .hero {
     padding: 8rem 0 4rem;
@@ -320,6 +333,10 @@ ul {
     display: block;
 }
 
+/* ------------------------------- */
+/* SECTIONS */
+/* ------------------------------- */
+
 .section-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -341,6 +358,10 @@ ul {
     max-width: 600px;
     margin: 0 auto;
 }
+
+/* ------------------------------- */
+/* FEATURES GRID (INDEX PAGE) */
+/* ------------------------------- */
 
 .features {
     padding: 6rem 0;
@@ -390,6 +411,10 @@ ul {
     color: var(--color-text-secondary);
     line-height: 1.7;
 }
+
+/* ------------------------------- */
+/* SCREENSHOTS */
+/* ------------------------------- */
 
 .screenshots {
     padding: 6rem 0;
@@ -446,6 +471,10 @@ ul {
     padding: 0 1.5rem 1.5rem;
 }
 
+/* ------------------------------- */
+/* CTA */
+/* ------------------------------- */
+
 .cta {
     padding: 6rem 0;
     background: 
@@ -477,6 +506,10 @@ ul {
     justify-content: center;
     gap: 1rem;
 }
+
+/* ------------------------------- */
+/* FOOTER */
+/* ------------------------------- */
 
 .footer {
     padding: 4rem 0 2rem;
@@ -542,6 +575,10 @@ ul {
     color: var(--color-text-muted);
     font-size: 0.875rem;
 }
+
+/* ------------------------------- */
+/* RESPONSIVE */
+/* ------------------------------- */
 
 @media (max-width: 1024px) {
     .hero .container {
@@ -675,6 +712,10 @@ ul {
     }
 }
 
+/* ------------------------------- */
+/* ANIMATIONS */
+/* ------------------------------- */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -701,4 +742,136 @@ ul {
 
 .animate-float {
     animation: float 6s ease-in-out infinite;
+}
+
+/* ========================================================= */
+/* FEATURES + COMPARISON PAGE ADDITIONS */
+/* ========================================================= */
+
+.features-hero {
+    padding: 6.5rem 0 3.5rem;
+    text-align: center;
+}
+
+.feature-compare-container {
+    padding: 3rem 0 6rem;
+}
+
+.feature-row {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    margin-bottom: 1rem;
+    transition: all var(--transition-base);
+}
+
+.feature-row:hover {
+    border-color: var(--color-cyan);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(93,229,249,0.10);
+}
+
+.feature-title-compare {
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-desc-compare {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+.compare-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.6rem;
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.02);
+    font-size: 0.9rem;
+}
+
+.compare-entry .label {
+    font-weight: 600;
+}
+
+.compare-badge {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.badge-yes {
+    background: rgba(93,229,249,0.12);
+    color: var(--color-cyan);
+    border: 1px solid rgba(93,229,249,0.18);
+}
+
+.badge-partial {
+    background: rgba(168,85,247,0.1);
+    color: var(--color-purple);
+    border: 1px solid rgba(168,85,247,0.15);
+}
+
+.badge-no {
+    background: rgba(110,119,129,0.06);
+    color: var(--color-text-muted);
+    border: 1px solid rgba(110,119,129,0.10);
+}
+
+.compare-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    min-width: 240px;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
+}
+
+.chip {
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.chip.active {
+    border-color: var(--color-cyan);
+    background: rgba(93,229,249,0.06);
+    color: var(--color-cyan);
+}
+
+/* Responsive adjustments for comparison page */
+@media (max-width: 768px) {
+    .feature-row {
+        grid-template-columns: 1fr;
+    }
+
+    .compare-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }

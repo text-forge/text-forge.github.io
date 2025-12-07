@@ -161,3 +161,21 @@ window.TextForge = {
 if (document.getElementById('blog-posts')) {
     window.TextForge.loadBlogPosts();
 }
+
+// safe helper: only run page helpers if elements exist
+document.addEventListener('DOMContentLoaded', function() {
+    // make sure the header behavior continues to work across pages
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    // optional: highlight current nav link
+    const links = document.querySelectorAll('.nav-menu a.nav-link');
+    links.forEach(a => {
+        try {
+            const href = a.getAttribute('href') || '';
+            if (location.pathname.endsWith(href) || location.pathname.endsWith(href.replace('./',''))) {
+                a.classList.add('active-nav');
+            }
+        } catch (e) {}
+    });
+});
