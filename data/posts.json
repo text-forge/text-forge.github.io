@@ -8,7 +8,7 @@
       "tag": "release",
       "featured": true,
       "excerpt": "We're excited to announce the first release candidate for version 0.2! This release introduces the powerful new Template System, allowing you to create reusable document structures with customizable placeholders. We've also added synchronized preview scrolling, so your preview pane follows along as you edit.",
-      "link": "https://github.com/text-forge/text-forge/releases"
+      "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-rc1"
     },
     {
       "id": "upcoming-features",
@@ -27,7 +27,7 @@
       "tag": "release",
       "featured": false,
       "excerpt": "Syntax highlighting colors now automatically adapt to your chosen theme. Plus, custom preview formats let you see your documents exactly how you want them.",
-      "link": "https://github.com/text-forge/text-forge/releases"
+      "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-beta2"
     },
     {
       "id": "v0.2-beta1-release",
@@ -37,7 +37,7 @@
       "tag": "release",
       "featured": false,
       "excerpt": "The first beta of v0.2 brings theme support, the community Marketplace for sharing extensions, and the Text Forge Project Module (TFPM) for better project management.",
-      "link": "https://github.com/text-forge/text-forge/releases"
+      "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-beta1"
     },
     {
       "id": "mode-library",
@@ -55,7 +55,7 @@
       "tag": "guide",
       "featured": false,
       "excerpt": "New to Text Forge? Check out our comprehensive documentation to learn about modules, modes, action scripts, and how to customize your editing experience.",
-      "link": "https://text-forge.github.io/docs/"
+      "link": "https://text-forge.github.io/docs/introduction"
     }
   ]
 }
