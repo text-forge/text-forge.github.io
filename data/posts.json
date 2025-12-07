@@ -13,6 +13,7 @@
     {
       "id": "bookmarks-smart-indentation",
       "title": "Bookmarks & Smart Indentation Released",
+      "version": "v0.2-rc2",
       "date": "2025-12-07",
       "tag": "feature",
       "featured": false,
@@ -26,7 +27,7 @@
       "date": "2025-11-20",
       "tag": "release",
       "featured": false,
-      "excerpt": "We're excited to announce the first release candidate for version 0.2! This release introduces the powerful new Template System, allowing you to create reusable document structures with customizable placeholders. We've also added synchronized preview scrolling, so your preview pane follows along as you edit.",
+      "excerpt": "First Candidate Release 0.2 is out! It delivers a new and powerful template system, reusable document structures with customizable placeholders. Synced preview scrolling has also been added, so your preview page moves in sync with your editing.",
       "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-rc1"
     },
     {
