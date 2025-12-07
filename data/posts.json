@@ -1,0 +1,61 @@
+{
+  "posts": [
+    {
+      "id": "v0.2-rc1-release",
+      "title": "Template System & Synchronized Preview Scrolling",
+      "version": "v0.2-rc1",
+      "date": "2025-11-20",
+      "tag": "release",
+      "featured": true,
+      "excerpt": "We're excited to announce the first release candidate for version 0.2! This release introduces the powerful new Template System, allowing you to create reusable document structures with customizable placeholders. We've also added synchronized preview scrolling, so your preview pane follows along as you edit.",
+      "link": "https://github.com/text-forge/text-forge/releases"
+    },
+    {
+      "id": "upcoming-features",
+      "title": "Upcoming: Bookmarks & Smart Indentation",
+      "date": "Coming Soon",
+      "tag": "feature",
+      "featured": false,
+      "excerpt": "Get a sneak peek at what's coming next: bookmark support for quick navigation, mode-driven indentation that adapts to your language, and UI filters for a cleaner workspace.",
+      "link": "https://github.com/text-forge/text-forge/discussions"
+    },
+    {
+      "id": "v0.2-beta2-release",
+      "title": "Theme-Aware Syntax Highlighting",
+      "version": "v0.2-beta2",
+      "date": "2025-10-09",
+      "tag": "release",
+      "featured": false,
+      "excerpt": "Syntax highlighting colors now automatically adapt to your chosen theme. Plus, custom preview formats let you see your documents exactly how you want them.",
+      "link": "https://github.com/text-forge/text-forge/releases"
+    },
+    {
+      "id": "v0.2-beta1-release",
+      "title": "Introducing the Marketplace",
+      "version": "v0.2-beta1",
+      "date": "2025-09-25",
+      "tag": "release",
+      "featured": false,
+      "excerpt": "The first beta of v0.2 brings theme support, the community Marketplace for sharing extensions, and the Text Forge Project Module (TFPM) for better project management.",
+      "link": "https://github.com/text-forge/text-forge/releases"
+    },
+    {
+      "id": "mode-library",
+      "title": "Explore the Mode Library",
+      "date": "Ongoing",
+      "tag": "community",
+      "featured": false,
+      "excerpt": "Discover community-created modes for different languages and file formats. From Markdown to configuration files, find the perfect mode for your workflow.",
+      "link": "https://github.com/text-forge/mode-library"
+    },
+    {
+      "id": "getting-started",
+      "title": "Getting Started with Text Forge",
+      "date": "Updated",
+      "tag": "guide",
+      "featured": false,
+      "excerpt": "New to Text Forge? Check out our comprehensive documentation to learn about modules, modes, action scripts, and how to customize your editing experience.",
+      "link": "https://text-forge.github.io/docs/"
+    }
+  ]
+}
