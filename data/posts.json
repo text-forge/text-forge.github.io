@@ -21,12 +21,12 @@
       "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-rc1"
     },
     {
-      "id": "upcoming-features",
-      "title": "Upcoming: Bookmarks & Smart Indentation",
-      "date": "Coming Soon",
+      "id": "bookmarks-smart-indentation",
+      "title": "Bookmarks & Smart Indentation Released",
+      "date": "2025-12-07",
       "tag": "feature",
-      "featured": false,
-      "excerpt": "Get a sneak peek at what's coming next: bookmark support for quick navigation, mode-driven indentation that adapts to your language, and UI filters for a cleaner workspace.",
+      "featured": true,
+      "excerpt": "Say hi to Text Forge v0.2 - RC2: Bookmarks for quick navigation, smart indentation that adapts to your language, and UI filters for a cleaner workspace are now available. This update makes working with Text Forge smoother and more efficient.",
       "link": "https://github.com/text-forge/text-forge/discussions"
     },
     {
