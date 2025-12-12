@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download Text Forge</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { padding-top: 4rem; }
+    .download-hero { text-align: center; padding: 3rem 0; }
+    .download-section { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .download-card { 
+      border: 1px solid var(--color-border); 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      margin-bottom: 1.5rem; 
+      background: var(--color-surface); 
+      transition: 0.25s ease;flex: 1;
+      min-width: 340px;
+    }
+    /* ⭐ Highlight detected platform */
+    .download-card.highlight {
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 15px rgba(44, 226, 247, 0.25);
+    }
+
+    .download-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .download-desc { color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 1rem; }
+
+    /* ⭐ Button text changed to dark */
+    .download-btn { 
+      display: inline-block; 
+      padding: 0.7rem 1.2rem; 
+      border-radius: 8px; 
+      background: var(--color-cyan); 
+      color: #0d1117; /* DARK TEXT */
+      font-weight: 600; 
+      text-decoration: none; 
+    }
+    .download-btn.disabled { background: #555; cursor: default; pointer-events: none; color: #ccc; }
+
+    .version-label { margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-text-secondary); }
+
+    .download-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .version-label a {
+      color: var(--color-cyan);        /* Make it look like a link */
+      font-weight: 600;                /* Optional: make it stand out */
+      text-decoration: underline;      /* Optional: show underline */
+    }
+
+    .version-label a:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <nav class="nav container">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/logo.png" class="logo-img">
+      <span class="logo-text">Text Forge</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="features.html" class="nav-link">Features</a></li>
+      <li><a href="index.html#screenshots" class="nav-link">Screenshots</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="download.html" class="nav-link active">Download</a></li>
+      <li><a href="https://text-forge.github.io/docs/" target="_blank" class="nav-link">Docs</a></li>
+      <li><a href="https://text-forge.github.io/marketplace/" target="_blank" class="nav-link">Marketplace</a></li>
+      <li><a href="https://github.com/text-forge/text-forge" class="nav-link nav-link-github" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="download-hero">
+    <h1 class="section-title">Download Text Forge</h1>
+    <p class="section-subtitle">Choose your platform and start using Text Forge in minutes.</p>
+    <p id="latest-version" class="version-label">Checking latest version...</p>
+  </section>
+
+  <section class="download-section">
+    <div class="download-row">
+      <div id="card-windows" class="download-card">
+        <div class="download-title">Windows (Portable ZIP)</div>
+        <div class="download-desc">
+          Portable build for Windows (x86_64). No installer — unpack and run.
+        </div>
+        <a id="download-windows" class="download-btn disabled">Loading...</a>
+      </div>
+
+      <div id="card-linux" class="download-card">
+        <div class="download-title">Linux (ZIP Bundle)</div>
+        <div class="download-desc">
+          ZIP archive including x86_64 binary and launch script.
+        </div>
+        <a id="download-linux" class="download-btn disabled">Loading...</a>
+      </div>
+    </div>
+
+    <p class="version-label" style="text-align:center;">
+      Looking for older versions? Visit
+      <a href="https://github.com/text-forge/text-forge/releases" target="_blank">GitHub Releases</a>.
+      <br><br>
+      All files are fetched from GitHub.
+    </p>
+
+  </section>
+
+</main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Text Forge Logo" class="logo-img">
+                        <span>Text Forge</span>
+                    </a>
+                    <p class="footer-tagline">Simplicity to start, power to grow!</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Project</h4>
+                        <ul>
+                            <li><a href="https://github.com/text-forge/text-forge" target="_blank">GitHub</a></li>
+                            <li><a href="https://github.com/text-forge/text-forge/releases" target="_blank">Releases</a></li>
+                            <li><a href="https://text-forge.github.io/docs/" target="_blank">Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="https://github.com/text-forge/text-forge/discussions" target="_blank">Discussions</a></li>
+                            <li><a href="https://text-forge.github.io/marketplace" target="_blank">Marketplace</a></li>
+                            <li><a href="https://github.com/text-forge/mode-library" target="_blank">Mode Library</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>More</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="https://github.com/text-forge/text-forge/blob/main/LICENSE" target="_blank">License (MIT)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Text Forge. Open source under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+async function loadLatestRelease() {
+  const versionLabel = document.getElementById("latest-version");
+  const winBtn = document.getElementById("download-windows");
+  const linuxBtn = document.getElementById("download-linux");
+  const winCard = document.getElementById("card-windows");
+  const linuxCard = document.getElementById("card-linux");
+
+  try {
+    const res = await fetch("https://api.github.com/repos/text-forge/text-forge/releases/latest");
+    const data = await res.json();
+
+    const version = data.tag_name;
+    const assets = data.assets;
+
+    versionLabel.textContent = "Latest Version: " + version;
+
+    const winAsset = assets.find(a =>
+      a.name.toLowerCase().includes("windows") &&
+      a.name.toLowerCase().endsWith(".zip")
+    );
+
+    if (winAsset) {
+      winBtn.textContent = "Download for Windows";
+      winBtn.href = winAsset.browser_download_url;
+      winBtn.classList.remove("disabled");
+    } else {
+      winBtn.textContent = "Windows build unavailable";
+    }
+
+    const linuxAsset = assets.find(a =>
+      a.name.toLowerCase().includes("linux") &&
+      a.name.toLowerCase().endsWith(".zip")
+    );
+
+    if (linuxAsset) {
+      linuxBtn.textContent = "Download for Linux";
+      linuxBtn.href = linuxAsset.browser_download_url;
+      linuxBtn.classList.remove("disabled");
+    } else {
+      linuxBtn.textContent = "Linux build unavailable";
+    }
+
+    // ⭐ Auto-highlight detected OS
+    const ua = navigator.userAgent.toLowerCase();
+    if (ua.includes("windows")) winCard.classList.add("highlight");
+    else if (ua.includes("linux")) linuxCard.classList.add("highlight");
+
+  } catch (e) {
+    versionLabel.textContent = "Failed to load version.";
+    winBtn.textContent = "Error";
+    linuxBtn.textContent = "Error";
+  }
+}
+
+loadLatestRelease();
+</script>
+
+</body>
+</html>
