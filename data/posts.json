@@ -1,12 +1,22 @@
 {
   "posts": [
     {
+      "id": "v0.2-stable-release",
+      "title": "Text Forge 0.2 - Stable Release",
+      "version": "v0.2.0",
+      "date": "2025-12-17",
+      "tag": "release",
+      "featured": true,
+      "excerpt": "Text Forge v0.2.0 is now stable! After several betas and release candidates, this milestone delivers a polished foundation for the editor. Highlights include the powerful template system, synchronized preview scrolling, smart indentation per language, a bookmarks panel for quick navigation, UI filters for a cleaner workspace, and improved backup reliability with a critical security fix for plugin extraction. This release sets the stage for a robust ecosystem of modes, extensions, and community contributions.",
+      "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0"
+    },
+    {
       "id": "v0.2-rc2-release",
       "title": "0.2 - RC2 Stability & Final Preparations",
       "version": "v0.2-rc2",
       "date": "2025-12-07",
       "tag": "release",
-      "featured": true,
+      "featured": false,
       "excerpt": "The release of Text Forge v0.2.0-rc2 marks another step toward the upcoming stable milestone, with over 80 commits since rc1. This candidate brings key improvements such as mode-driven indentation settings, a new bookmarks panel, auto text direction, and enhanced backup reliability. It also includes important bug fixes and a security update for plugin extraction, making rc2 both a stability and polish release.",
       "link": "https://github.com/text-forge/text-forge/releases/tag/v0.2.0-rc2"
     },
